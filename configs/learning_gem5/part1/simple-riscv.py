@@ -61,7 +61,8 @@ binary = os.path.join(
     thispath,
     "../../../",
     # "tests/test-progs/hello/bin/riscv/linux/hello",
-    "/home/gem5/tests/riscv-elf/rvv_baseline.riscv",
+    # "/home/gem5/tests/riscv-elf/rvv_baseline.riscv",
+    "/home/gem5/tests/riscv-elf/vmod.riscv",
 )
 
 system.workload = SEWorkload.init_compatible(binary)

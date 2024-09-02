@@ -526,6 +526,7 @@ decode QUADRANT default Unknown::unknown() {
             }
         }
     }
+    //RVVㄱㅏ 여기에 있음
     0x3: decode OPCODE5 {
         0x00: decode FUNCT3 {
             format Load {
@@ -2774,7 +2775,7 @@ decode QUADRANT default Unknown::unknown() {
                 }}, FloatCvtOp);
             }
         }
-
+        //RVV가 여기에 있음
         0x15: decode FUNCT3 {
             // OPIVV
             0x0: decode VFUNCT6 {
@@ -2784,6 +2785,9 @@ decode QUADRANT default Unknown::unknown() {
                     }}, OPIVV, SimdAddOp);
                     0x2: vsub_vv({{
                         Vd_vu[i] = Vs2_vu[i] - Vs1_vu[i];
+                    }}, OPIVV, SimdAddOp);
+                    0x3: vmod_vv({{
+                        Vd_vu[i] = Vs2_vu[i] % Vs1_vu[i];
                     }}, OPIVV, SimdAddOp);
                     0x4: vminu_vv({{
                         Vd_vu[i] = Vs2_vu[i] < Vs1_vu[i] ?
