@@ -10,7 +10,7 @@ clear
 # Set the file name to compile from the first argument
 #SOURCE_FILE="$1"
 
-CONFIG_DIR="configs/learning_gem5/part1/simple-riscv.py"
+CONFIG_DIR="configs/learning_gem5/part1/RiscvO3CPU.py"
 
 # Change directory to the specified path
 cd /home/gem5 || exit 1
