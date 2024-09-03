@@ -41,6 +41,11 @@ from m5.objects.FuncUnit import *
 from m5.params import *
 from m5.SimObject import SimObject
 
+DEFAULT_CYCLE = 1
+STRIDE_LOAD_CYCLE = DEFAULT_CYCLE
+STRIDE_STORE_CYCLE = DEFAULT_CYCLE
+SIMD_CONFIG_CYCLE = DEFAULT_CYCLE
+
 
 class IntALU(FUDesc):
     opList = [OpDesc(opClass="IntAlu")]
@@ -108,7 +113,7 @@ class SIMD_Unit(FUDesc):
         OpDesc(opClass="SimdFloatReduceCmp"),
         OpDesc(opClass="SimdExt"),
         OpDesc(opClass="SimdFloatExt"),
-        OpDesc(opClass="SimdConfig"),
+        OpDesc(opClass="SimdConfig", opLat=SIMD_CONFIG_CYCLE),
     ]
     count = 4
 
@@ -122,7 +127,7 @@ class ReadPort(FUDesc):
     opList = [
         OpDesc(opClass="MemRead"),
         OpDesc(opClass="FloatMemRead"),
-        OpDesc(opClass="SimdUnitStrideLoad"),
+        OpDesc(opClass="SimdUnitStrideLoad", opLat=STRIDE_LOAD_CYCLE),
         OpDesc(opClass="SimdUnitStrideMaskLoad"),
         OpDesc(opClass="SimdStridedLoad"),
         OpDesc(opClass="SimdIndexedLoad"),
@@ -136,7 +141,7 @@ class WritePort(FUDesc):
     opList = [
         OpDesc(opClass="MemWrite"),
         OpDesc(opClass="FloatMemWrite"),
-        OpDesc(opClass="SimdUnitStrideStore"),
+        OpDesc(opClass="SimdUnitStrideStore", opLat=STRIDE_STORE_CYCLE),
         OpDesc(opClass="SimdUnitStrideMaskStore"),
         OpDesc(opClass="SimdStridedStore"),
         OpDesc(opClass="SimdIndexedStore"),
@@ -151,8 +156,8 @@ class RdWrPort(FUDesc):
         OpDesc(opClass="MemWrite"),
         OpDesc(opClass="FloatMemRead"),
         OpDesc(opClass="FloatMemWrite"),
-        OpDesc(opClass="SimdUnitStrideLoad"),
-        OpDesc(opClass="SimdUnitStrideStore"),
+        OpDesc(opClass="SimdUnitStrideLoad", opLat=STRIDE_LOAD_CYCLE),
+        OpDesc(opClass="SimdUnitStrideStore", opLat=STRIDE_STORE_CYCLE),
         OpDesc(opClass="SimdUnitStrideMaskLoad"),
         OpDesc(opClass="SimdUnitStrideMaskStore"),
         OpDesc(opClass="SimdStridedLoad"),
