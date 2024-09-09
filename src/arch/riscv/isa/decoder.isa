@@ -4308,6 +4308,11 @@ decode QUADRANT default Unknown::unknown() {
                                              ftype_freg<et>(freg(Fs1_bits)),
                                              false, true).v;
                     }}, OPFVF, SimdFloatExtOp);
+                    0x11: vfrope_vf({{
+                        auto fd = fadd<et>(ftype<et>(Vs2_vu[i]),
+                                           ftype_freg<et>(freg(Fs1_bits)));
+                        Vd_vu[i] = fd.v;
+                    }}, OPFVF, SimdFloatAddOp);
                 }
                 0x0e: VectorFloatSlideUpFormat::vfslide1up_vf({{
                     const int offset = 1;

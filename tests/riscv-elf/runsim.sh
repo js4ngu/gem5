@@ -2,17 +2,25 @@
 # Clear the terminal
 clear
 
-# Check if a source file is provided as an argument
-#if [ -z "$1" ]; then
-#  echo "Usage: $0 <source_file>"
-#  exit 1
-#fi
-# Set the file name to compile from the first argument
-#SOURCE_FILE="$1"
+# Define the configuration file, debug flags, and output directory
+CONFIG_DIR="/home/gem5/configs/learning_gem5/part1/RiscvMinorCPU.py"
+DEBUG_FLAGS="Exec"  # You can add more debug flags as needed
+OUTPUT_DIR="/home/gem5/tests/riscv-elf/out"  # Custom output directory
 
-CONFIG_DIR="configs/learning_gem5/part1/RiscvO3CPU.py"
+# Check if the configuration file exists before proceeding
+if [[ ! -f "$CONFIG_DIR" ]]; then
+  echo "Configuration file not found: $CONFIG_DIR"
+  exit 1
+fi
 
-# Change directory to the specified path
-cd /home/gem5 || exit 1
+# Ensure the output directory exists
+mkdir -p "$OUTPUT_DIR"
 
-build/RISCV/gem5.opt "$CONFIG_DIR"
+# Change to the gem5 root directory
+cd /home/gem5 || { echo "Failed to change directory to /home/gem5"; exit 1; }
+
+# Run the gem5 simulation with debug flags and explicitly set the output directory
+#build/RISCV/gem5.opt --outdir="$OUTPUT_DIR" --debug-flags="$DEBUG_FLAGS" "$CONFIG_DIR" > "$OUTPUT_DIR/gem5_terminal_output.log" 2>&1
+
+# If you want to run without debug flags, you can comment out the above and uncomment below:
+build/RISCV/gem5.opt --outdir="$OUTPUT_DIR" "$CONFIG_DIR"

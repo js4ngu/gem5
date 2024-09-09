@@ -38,9 +38,9 @@ system.clk_domain = SrcClockDomain()
 system.clk_domain.clock = "1GHz"
 system.clk_domain.voltage_domain = VoltageDomain()
 
-system.mem_mode = "timing"
+system.mem_mode = "timing"  # Correct memory mode for MinorCPU
 system.mem_ranges = [AddrRange("512MB")]
-system.cpu = RiscvO3CPU()
+system.cpu = RiscvMinorCPU()  # Switching to RiscvMinorCPU
 
 system.membus = SystemXBar()
 
@@ -60,9 +60,9 @@ thispath = os.path.dirname(os.path.realpath(__file__))
 binary = os.path.join(
     thispath,
     "../../../",
-    # "tests/test-progs/hello/bin/riscv/linux/hello",
     # "/home/gem5/tests/riscv-elf/rvv_baseline.riscv",
-    "/home/gem5/tests/riscv-elf/vmod.riscv",
+    # "/home/gem5/tests/riscv-elf/cmp_scalar_rope.riscv",
+    "/home/gem5/tests/riscv-elf/cmp_simd_rope.riscv",
 )
 
 system.workload = SEWorkload.init_compatible(binary)
