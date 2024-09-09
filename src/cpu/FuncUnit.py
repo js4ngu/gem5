@@ -116,6 +116,7 @@ class OpClass(Enum):
         "SimdExt",
         "SimdFloatExt",
         "SimdConfig",
+        "rope",
     ]
 
 

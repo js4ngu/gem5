@@ -230,6 +230,18 @@ class MinorDefaultFloatSimdFU(MinorFU):
     opLat = 6
 
 
+class MinorRopeFU(MinorFU):
+    opClasses = minorMakeOpClassSet(["rope"])  # 새로운 명령어 클래스
+    timings = [
+        MinorFUTiming(
+            description="About Rope",
+            srcRegsRelativeLats=[2],
+            extraCommitLat=10,
+        )
+    ]
+    opLat = 10  # Latency for vfrope.vv
+
+
 class MinorDefaultPredFU(MinorFU):
     opClasses = minorMakeOpClassSet(["SimdPredAlu"])
     timings = [MinorFUTiming(description="Pred", srcRegsRelativeLats=[2])]
@@ -279,6 +291,7 @@ class MinorDefaultFUPool(MinorFUPool):
         MinorDefaultPredFU(),
         MinorDefaultMemFU(),
         MinorDefaultMiscFU(),
+        MinorRopeFU(),
     ]
 
 

@@ -53,6 +53,8 @@ namespace gem5
 using enums::OpClass;
 using enums::No_OpClass;
 
+static const OpClass ropeOp = enums::rope;  // 새로운 연산 클래스 추가
+
 static const OpClass IntAluOp = enums::IntAlu;
 static const OpClass IntMultOp = enums::IntMult;
 static const OpClass IntDivOp = enums::IntDiv;
