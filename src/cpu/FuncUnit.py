@@ -116,7 +116,7 @@ class OpClass(Enum):
         "SimdExt",
         "SimdFloatExt",
         "SimdConfig",
-        "rope",
+        "rope",  # Custom ISA
     ]
 
 

@@ -231,7 +231,7 @@ class MinorDefaultFloatSimdFU(MinorFU):
 
 
 class MinorRopeFU(MinorFU):
-    opClasses = minorMakeOpClassSet(["rope"])  # 새로운 명령어 클래스
+    opClasses = minorMakeOpClassSet(["rope"])  # Custom ISA
     timings = [
         MinorFUTiming(
             description="About Rope",
@@ -239,7 +239,7 @@ class MinorRopeFU(MinorFU):
             extraCommitLat=10,
         )
     ]
-    opLat = 10  # Latency for vfrope.vv
+    opLat = 12  # Latency for vfrope.vv
 
 
 class MinorDefaultPredFU(MinorFU):

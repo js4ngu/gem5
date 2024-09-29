@@ -20,6 +20,9 @@ m5out
 /util/tap/*.o
 /util/tap/m5tap
 /util/term/m5term
+/tests/riscv-elf/out
+/tests/riscv-elf/m5out
+/tests/riscv-elf/*.riscv
 /system/arm/dt/*.dtb
 /system/arm/dt/.gen
 /system/arm/bootloader/arm/*.o
@@ -35,3 +38,5 @@ configs/dram/lowp_sweep.cfg
 .vscode
 typings
 .DS_Store
+tests/riscv-elf/rvv_baseline.riscv
+tests/riscv-elf/vmod.riscv

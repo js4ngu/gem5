@@ -101,7 +101,7 @@ class RiscvISA(BaseISA):
         VLEN in Ch. 2 of RISC-V vector spec",
     )
     elen = Param.RiscvVectorElementLength(
-        64,
+        32,
         "Length of each vector element in bits. \
         ELEN in Ch. 2 of RISC-V vector spec",
     )
