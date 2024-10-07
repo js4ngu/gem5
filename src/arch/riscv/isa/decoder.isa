@@ -4313,7 +4313,16 @@ decode QUADRANT default Unknown::unknown() {
                                            ftype_freg<et>(freg(Fs1_bits)));
                         Vd_vu[i] = fd.v;
                     }}, OPFVF, ropeOp);
+
+                    0x12: vfrope_fvx({{
+                        auto scalar_int = Rs1_vu;
+                        auto vector_elem = ftype<et>(Vs2_vu[i]);
+                        auto result = ftype<et>(0);
+                        Vd_vu[i] = result.v;
+                    }}, OPFVX, ropeOp);
+
                 }
+
                 0x0e: VectorFloatSlideUpFormat::vfslide1up_vf({{
                     const int offset = 1;
                     const int microVlmax = vtype_VLMAX(machInst.vtype8,

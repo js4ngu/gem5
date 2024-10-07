@@ -239,7 +239,10 @@ class MinorRopeFU(MinorFU):
             extraCommitLat=10,
         )
     ]
+
     opLat = 12  # Latency for vfrope.vv
+    # 연속적인 연산들 사이의 최소 간격을 나타냅니다. 즉, throughput
+    issueLat = 1  # Explicitly set throughput to 1
 
 
 class MinorDefaultPredFU(MinorFU):

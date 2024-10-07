@@ -38,9 +38,9 @@ system.clk_domain = SrcClockDomain()
 system.clk_domain.clock = "1GHz"
 system.clk_domain.voltage_domain = VoltageDomain()
 
-system.mem_mode = "timing"  # Correct memory mode for MinorCPU
+system.mem_mode = "timing"
 system.mem_ranges = [AddrRange("512MB")]
-system.cpu = RiscvMinorCPU()  # Switching to RiscvMinorCPU
+system.cpu = RiscvMinorCPU()  # in-order processor model with a fixed pipeline
 
 system.membus = SystemXBar()
 
@@ -60,8 +60,10 @@ thispath = os.path.dirname(os.path.realpath(__file__))
 binary = os.path.join(
     thispath,
     "../../../",
-    "/home/gem5/tests/riscv-elf/cmp_scalar_rope.riscv",
+    # "/home/gem5/tests/riscv-elf/cmp_scalar_rope.riscv",
     # "/home/gem5/tests/riscv-elf/cmp_simd_rope.riscv",  # 1279617000
+    # "/home/gem5/tests/riscv-elf/cmp_simd_rope_vfx.riscv",  # 1279617000
+    "/home/gem5/tests/riscv-elf/cmp_simd_rvv_standard_rope.riscv",
 )
 
 system.workload = SEWorkload.init_compatible(binary)
