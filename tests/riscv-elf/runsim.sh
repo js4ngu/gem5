@@ -3,7 +3,7 @@
 clear
 
 # Define the configuration file, debug flags, and output directory
-CONFIG_DIR="/home/gem5/configs/learning_gem5/part1/RiscvMinorCPU.py"
+CONFIG_DIR="/home/gem5/configs/learning_gem5/part1/RiscvMinorCPUnew.py"
 DEBUG_FLAGS="Exec"  # You can add more debug flags as needed
 OUTPUT_DIR="/home/gem5/tests/riscv-elf/out"  # Custom output directory
 

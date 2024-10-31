@@ -59,11 +59,10 @@ system.system_port = system.membus.cpu_side_ports
 thispath = os.path.dirname(os.path.realpath(__file__))
 binary = os.path.join(
     thispath,
-    "../../../",
+    # "../../../",
     # "/home/gem5/tests/riscv-elf/cmp_scalar_rope.riscv",
-    # "/home/gem5/tests/riscv-elf/cmp_simd_rope.riscv",  # 1279617000
-    # "/home/gem5/tests/riscv-elf/cmp_simd_rope_vfx.riscv",  # 1279617000
-    "/home/gem5/tests/riscv-elf/cmp_simd_rvv_standard_rope.riscv",
+    # "/home/gem5/tests/riscv-elf/cmp_simd_rvv_standard_rope.riscv",
+    "/home/gem5/tests/riscv-elf/cmp_simd_rope_vfx.riscv",  # 1279617000
 )
 
 system.workload = SEWorkload.init_compatible(binary)
